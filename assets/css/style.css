@@ -1,0 +1,1084 @@
+/* ============================================ */
+/* FONTS - Bungee + Inter + Abril Fatface       */
+/* ============================================ */
+@font-face {
+    font-family: 'Abril Fatface';
+    src: url('../fonts/abril-fatface-v25-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Bungee';
+    src: url('../fonts/bungee-v17-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/inter-v20-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+/* ============================================ */
+/* RESET & BASE                                 */
+/* ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #0d0d1a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 140, 66, 0.10) 0%, transparent 55%),
+    radial-gradient(circle at 80% 50%, rgba(230, 126, 34, 0.07) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================ */
+/* MAIN CONTAINER - Dark Glassmorphism + Clay   */
+/* ============================================ */
+.clayvibe-dialog-container {
+  width: 100%;
+  max-width: 520px;
+  border: none;
+  border-radius: 28px;
+  background: rgba(22, 22, 40, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 20px auto;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.clayvibe-dialog-container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, rgba(255, 140, 66, 0.18), rgba(230, 126, 34, 0.06), rgba(255, 215, 0, 0.08));
+  z-index: -1;
+  border-radius: 30px;
+}
+
+/* ============================================ */
+/* BANNER - Warm Clay Gradient                  */
+/* ============================================ */
+.clayvibe-dialog-banner {
+  width: 100%;
+  background: linear-gradient(135deg, #1e1e2f, #3d2b1f, #5a3d2b);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid rgba(255, 140, 66, 0.35);
+}
+
+.clayvibe-dialog-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  position: relative;
+}
+
+.clayvibe-dialog-banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e67e22, #f39c12, #e67e22);
+  background-size: 200% 100%;
+  animation: smoothPulse 4s ease-in-out infinite;
+}
+
+@keyframes smoothPulse {
+  0%, 100% { background-position: 0% 50%; opacity: 0.6; }
+  50% { background-position: 100% 50%; opacity: 1; }
+}
+
+/* ============================================ */
+/* CONTENT AREA                                 */
+/* ============================================ */
+.clayvibe-dialog-content {
+  padding: 24px 24px 20px;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.clayvibe-dialog-content::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ============================================ */
+/* INTERNET STATUS - Dark Pill + Warm Glow      */
+/* ============================================ */
+.internet-status-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 0 12px 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.internet-status-container.is-connected::before {
+  content: "● CONNECTED";
+  display: inline-block;
+  background: linear-gradient(135deg, #2d7d46, #3da55d);
+  color: #f0f4f8;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  padding: 6px 26px;
+  border-radius: 40px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 18px rgba(46, 204, 113, 0.30), inset 0 1px 0 rgba(255,255,255,0.15);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.internet-status-container.is-disconnected::before {
+  content: "● DISCONNECTED";
+  display: inline-block;
+  background: linear-gradient(135deg, #7a2a1f, #a93226);
+  color: #f0f4f8;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  padding: 6px 26px;
+  border-radius: 40px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 18px rgba(231, 76, 60, 0.30), inset 0 1px 0 rgba(255,255,255,0.15);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================ */
+/* DEVICE INFO                                  */
+/* ============================================ */
+.clayvibe-dialog-device-info {
+  background: transparent;
+  padding: 4px 0;
+  color: #9a8a7a;
+  font-size: 12px;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 0 4px 0;
+  border: none;
+  letter-spacing: 0.3px;
+}
+
+.clayvibe-dialog-device-info b {
+  color: #f39c12;
+  font-weight: 700;
+}
+
+/* ============================================ */
+/* PANEL - Dark Clay Card                       */
+/* ============================================ */
+.panel {
+  background: rgba(30, 30, 50, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 20px 16px;
+  margin: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 2px 14px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e67e22, #f39c12, transparent);
+  animation: smoothScan 5s ease-in-out infinite;
+}
+
+@keyframes smoothScan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Panel Label - Upper Left Corner */
+.panel-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 0 0 10px 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* ============================================ */
+/* TIME DISPLAY - Warm Clay Gradient            */
+/* ============================================ */
+#remainTime {
+  font-family: 'Bungee', 'Abril Fatface', monospace;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f7e8d0;
+  display: block;
+  background: linear-gradient(135deg, #f5d6b3, #f39c12);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  margin-top: 4px;
+}
+
+.expiration-text {
+  color: #b0a090;
+  font-size: 11px;
+  display: block;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* ============================================ */
+/* BUTTONS - Glassmorphism 3D Inset Style      */
+/* ============================================ */
+.clayvibe-btn {
+  margin: 6px 0;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  text-decoration: none;
+  position: relative;
+  font-weight: 700;
+  font-size: 14px;
+  color: #d4c8b8;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: rgba(30, 30, 50, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.03),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.clayvibe-btn:active {
+  transform: scale(0.97);
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- RESUME BUTTON - Warm Teal/Green --- */
+.clayvibe-btn[onclick*="doLogin"] {
+  background: linear-gradient(145deg, #1a6b5a, #2ecc71);
+  color: #f0f4f8;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: 1px solid rgba(46, 204, 113, 0.15);
+  box-shadow: 
+    inset 0 0 20px rgba(46, 204, 113, 0.10),
+    inset 0 2px 4px rgba(255, 255, 255, 0.10),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(46, 204, 113, 0.15);
+}
+
+.clayvibe-btn[onclick*="doLogin"]:active {
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- PAUSE BUTTON - Muted Gray --- */
+.clayvibe-btn[onclick*="pause"] {
+  background: linear-gradient(145deg, #3a3a4a, #4a4a5a);
+  color: #a0a0b0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.03),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.clayvibe-btn[onclick*="pause"]:active {
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- INSERT COIN - Golden Clay --- */
+.clayvibe-btn[onclick*="insertBtnAction"] {
+  background: linear-gradient(145deg, #d35400, #f39c12, #e67e22);
+  color: #1a1a2e;
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 2px;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  height: auto;
+  min-height: 54px;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 
+    inset 0 0 25px rgba(255, 215, 0, 0.15),
+    inset 0 2px 6px rgba(255, 255, 255, 0.20),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+    0 10px 32px rgba(243, 156, 18, 0.20);
+}
+
+.clayvibe-btn[onclick*="insertBtnAction"]:active {
+  box-shadow: 
+    inset 0 0 35px rgba(0, 0, 0, 0.25),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.clayvibe-btn[onclick*="insertBtnAction"] small {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: rgba(26, 26, 46, 0.75);
+  text-transform: none;
+}
+
+/* --- PROMO RATES - Warm Terracotta/Amber --- */
+.clayvibe-btn[onclick*="promoBtnAction"] {
+  background: linear-gradient(145deg, #8b2c1a, #e67e22);
+  color: #f0f4f8;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: 1px solid rgba(230, 126, 34, 0.15);
+  box-shadow: 
+    inset 0 0 20px rgba(230, 126, 34, 0.10),
+    inset 0 2px 4px rgba(255, 255, 255, 0.10),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(230, 126, 34, 0.15);
+}
+
+.clayvibe-btn[onclick*="promoBtnAction"]:active {
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- FREE TIME (Trial) - Muted Warm Amber --- */
+a.clayvibe-btn[href*="T-"] {
+  background: linear-gradient(145deg, #5a4a2a, #8a7a3a);
+  color: #f0f4f8;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: 1px solid rgba(138, 122, 58, 0.15);
+  box-shadow: 
+    inset 0 0 20px rgba(138, 122, 58, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(138, 122, 58, 0.12);
+}
+
+a.clayvibe-btn[href*="T-"]:active {
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================ */
+/* VOUCHER CONTAINER - Clean & Integrated      */
+/* ============================================ */
+.clayvibe-voucher-container {
+  background: rgba(30, 30, 50, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 16px;
+  padding: 16px 14px 12px;
+  margin: 8px 0 4px 0;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.clayvibe-voucher-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.clayvibe-voucher-container small {
+  display: block;
+  text-align: center;
+  color: #8a7a6a;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  padding-top: 6px;
+  clear: both;
+}
+
+/* ============================================ */
+/* INPUT - Dark + Warm Border                   */
+/* ============================================ */
+#voucherInput {
+  float: left;
+  width: 70%;
+  height: 48px;
+  color: #f0ece6;
+  background: rgba(10, 10, 20, 0.75);
+  border: 2px solid rgba(230, 126, 34, 0.25);
+  border-radius: 12px;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  font-weight: 600;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.03);
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+#voucherInput:focus {
+  border-color: #e67e22;
+  box-shadow: 0 0 0 5px rgba(230, 126, 34, 0.18), 0 2px 14px rgba(0, 0, 0, 0.25);
+  background: rgba(15, 15, 30, 0.85);
+}
+
+#voucherInput::placeholder {
+  color: #5a4e42;
+  font-weight: 500;
+}
+
+/* ============================================ */
+/* SUBMIT BUTTON - Glassmorphism 3D Inset Style */
+/* ============================================ */
+#submitBTN {
+  float: right;
+  width: 28%;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  color: #1a1a2e;
+  background: linear-gradient(145deg, #f7b731, #f39c12, #d35400);
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  position: relative;
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  box-shadow: 
+    inset 0 0 25px rgba(255, 215, 0, 0.15),
+    inset 0 2px 6px rgba(255, 255, 255, 0.20),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.3),
+    0 10px 32px rgba(243, 156, 18, 0.20);
+}
+
+#submitBTN:active {
+  transform: scale(0.97);
+  box-shadow: 
+    inset 0 0 35px rgba(0, 0, 0, 0.25),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ============================================ */
+/* BUTTON CONTAINER                             */
+/* ============================================ */
+.buttons-container {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#btns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+/* ============================================ */
+/* PROGRESS BAR - Warm Energy                   */
+/* ============================================ */
+.progress {
+  display: flex;
+  height: 8px;
+  width: 100%;
+  background: rgba(30, 30, 50, 0.5);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.progress-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #d35400, #f39c12, #d35400);
+  background-size: 200% 100%;
+  transition: width 0.4s ease;
+  width: 100%;
+  border-radius: 12px;
+  animation: smoothEnergy 4s linear infinite;
+}
+
+@keyframes smoothEnergy {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ============================================ */
+/* TABLES - Dark Clay                           */
+/* ============================================ */
+.insert-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.insert-table td {
+  padding: 10px 14px;
+  text-align: left;
+  background: rgba(20, 20, 35, 0.4);
+  color: #d4c8b8;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.insert-table .label {
+  font-weight: 700;
+  color: #f39c12;
+}
+
+#ratesBody table,
+.promo-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#ratesBody th,
+.promo-table th {
+  background: linear-gradient(135deg, #2d1f12, #5a3d2b);
+  color: #f5d6b3;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  border: none;
+}
+
+#ratesBody td,
+.promo-table td {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 10px 16px;
+  text-align: left;
+  background: rgba(20, 20, 35, 0.2);
+  color: #d4c8b8;
+  font-size: 12px;
+}
+
+/* ============================================ */
+/* COIN & TIME DISPLAY                          */
+/* ============================================ */
+#totalCoin {
+  font-size: 38px;
+  font-weight: 700;
+  color: #f5d6b3;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 24px rgba(243, 156, 18, 0.12);
+}
+
+#totalCoin+span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #9a8a7a;
+}
+
+#totalTime {
+  font-family: 'Bungee', 'Abril Fatface', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f39c12;
+  letter-spacing: 0.5px;
+}
+
+#vendoID {
+  color: #6a5a4a;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+/* ============================================ */
+/* SCROLL MESSAGE - Dark + Warm                 */
+/* ============================================ */
+.clayvibe-scrollMsg {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  background: rgba(20, 20, 35, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 8px 0;
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b0a090;
+  letter-spacing: 0.4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.clayvibe-scrollMsg-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: clayvibe-scrollMsg-anim var(--scroll-duration, 60s) linear infinite;
+}
+
+.clayvibe-scrollMsg-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes clayvibe-scrollMsg-anim {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================ */
+/* FOOTER                                       */
+/* ============================================ */
+#footer {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  font-size: 11px;
+  color: #4a3e32;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+#footer::before {
+  content: "ClayVibe · JuanFi Portal v1.0.0";
+  letter-spacing: 0.6px;
+  font-weight: 500;
+}
+
+/* ============================================ */
+/* MODAL - Dark Glass                           */
+/* ============================================ */
+.modal1 {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: smoothFadeIn 0.3s ease;
+}
+
+@keyframes smoothFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content1 {
+  background: rgba(22, 22, 40, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #d4c8b8;
+  margin: 15% auto;
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  width: 85%;
+  max-width: 380px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.modal-content1 b {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f39c12;
+}
+
+.modal-content1 span {
+  font-size: 18px;
+  color: #f5d6b3;
+}
+
+/* Modal Buttons - Glassmorphism 3D Inset Style */
+#idBtnModalRateEnd,
+#idBtninsrtCoinEnd {
+  background: rgba(30, 30, 50, 0.6);
+  color: #d4c8b8;
+  padding: 10px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  margin: 4px;
+  text-transform: uppercase;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  position: relative;
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.03),
+    inset 0 2px 4px rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+#idBtnModalRateEnd:active,
+#idBtninsrtCoinEnd:active {
+  transform: scale(0.97);
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================ */
+/* LOADER                                       */
+/* ============================================ */
+#loaderDiv {
+  position: fixed;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(22, 22, 40, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #d4c8b8;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 12px;
+  border: 3px solid rgba(50, 50, 70, 0.5);
+  border-top-color: #f39c12;
+  border-right-color: #e67e22;
+  border-radius: 50%;
+  animation: smoothSpin 0.8s linear infinite;
+}
+
+@keyframes smoothSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================ */
+/* HIDE UNUSED                                  */
+/* ============================================ */
+audio,
+#container {
+  display: none;
+}
+
+center {
+  display: block;
+  text-align: center;
+}
+
+/* ============================================ */
+/* SCROLLBAR - Dark                             */
+/* ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 30, 50, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5a4a3a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8a7a6a;
+}
+
+::selection {
+  background: #e67e22;
+  color: #1a1a2e;
+}
+
+/* ============================================ */
+/* RESPONSIVE - MOBILE FIRST                    */
+/* ============================================ */
+@media (max-width: 600px) {
+  .clayvibe-dialog-container {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    min-height: 100vh;
+  }
+
+  .clayvibe-dialog-container,
+  .clayvibe-dialog-banner,
+  .clayvibe-dialog-banner img,
+  .clayvibe-dialog-banner::after,
+  .clayvibe-dialog-device-info,
+  .internet-status-container,
+  .panel,
+  #voucherInput,
+  #submitBTN,
+  .clayvibe-btn,
+  .modal-content1,
+  .progress,
+  .progress-bar,
+  .insert-table,
+  #ratesBody table,
+  .promo-table,
+  #loaderDiv,
+  .clayvibe-voucher-container {
+    border-radius: 0 !important;
+  }
+
+  .clayvibe-dialog-content {
+    padding: 16px 14px;
+  }
+
+  .clayvibe-voucher-container {
+    padding: 12px 10px 10px;
+  }
+
+  .internet-status-container.is-connected::before,
+  .internet-status-container.is-disconnected::before {
+    font-size: 12px;
+    padding: 5px 18px;
+    letter-spacing: 0.5px;
+  }
+
+  #remainTime {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+  }
+
+  .panel {
+    padding: 16px 12px;
+    margin: 8px 0;
+  }
+
+  .panel-label {
+    font-size: 8px;
+    padding: 4px 10px;
+  }
+
+  #voucherInput {
+    width: 65%;
+    height: 44px;
+    font-size: 14px;
+    border-radius: 10px !important;
+  }
+
+  #submitBTN {
+    width: 33%;
+    height: 44px;
+    font-size: 11px;
+    border-radius: 10px !important;
+  }
+
+  .clayvibe-btn {
+    height: 46px;
+    font-size: 13px;
+    border-radius: 10px !important;
+  }
+
+  .clayvibe-btn[onclick*="insertBtnAction"] {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    min-height: 46px;
+    padding: 6px 10px;
+  }
+
+  .clayvibe-btn[onclick*="insertBtnAction"] small {
+    font-size: 8px;
+  }
+
+  .modal-content1 {
+    margin: 25% auto;
+    padding: 20px;
+    border-radius: 16px !important;
+  }
+
+  #btns {
+    gap: 8px;
+  }
+
+  .buttons-container {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .clayvibe-dialog-content {
+    padding: 12px 10px;
+  }
+
+  .clayvibe-voucher-container {
+    padding: 10px 8px 8px;
+  }
+
+  .clayvibe-voucher-container small {
+    font-size: 10px;
+  }
+
+  .internet-status-container.is-connected::before,
+  .internet-status-container.is-disconnected::before {
+    font-size: 11px;
+    padding: 4px 14px;
+  }
+
+  .clayvibe-dialog-device-info {
+    font-size: 10px;
+  }
+
+  #remainTime {
+    font-size: 26px;
+  }
+
+  .panel-label {
+    font-size: 7px;
+    padding: 3px 8px;
+  }
+
+  #voucherInput {
+    width: 60%;
+    font-size: 12px;
+    height: 40px;
+  }
+
+  #submitBTN {
+    width: 38%;
+    font-size: 10px;
+    height: 40px;
+  }
+
+  .clayvibe-btn {
+    font-size: 12px;
+    height: 42px;
+  }
+
+  .clayvibe-btn[onclick*="insertBtnAction"] {
+    font-size: 14px;
+    min-height: 42px;
+    padding: 4px 8px;
+  }
+  
+  .clayvibe-btn[onclick*="insertBtnAction"] small {
+    font-size: 7px;
+  }
+
+  #footer::before {
+    font-size: 10px;
+  }
+}

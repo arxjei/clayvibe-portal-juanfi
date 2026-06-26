@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script type="text/javascript">
+        var interfaceName = "$(interface-name)", stsPage = "$(logged-in)", mac = "$(mac)", uIp = "$(ip)", time = "$(session-time-left-secs)"
+    </script>
+</head>
+
+<body>
+    <div class="clayvibe-dialog-container">
+        <div class="clayvibe-dialog-banner">
+            <img src="assets/images/banner.webp" alt="Banner">
+        </div>
+        <div id="clayvibe-scrollMsg" class="clayvibe-scrollMsg"></div>
+        <div class="clayvibe-dialog-content">
+            <div class="internet-status-container is-disconnected"></div>
+            <header class="clayvibe-dialog-device-info">
+                &#127758<b>$(ip)</b>&#128421<b>$(mac)</b>
+            </header>
+            <div class="panel">
+                <div class="panel-label">Remaining Time</div>
+                <span id="remainTime"></span>
+            </div>
+            <button class="clayvibe-btn" onclick="return doLogin(),!1">RESUME</button>
+            <button class="clayvibe-btn" onclick="return insertBtnAction(),!1">
+                INSERT COIN
+                <small>
+                    ⚠️ Please Do Not Abuse The Coinslot
+                </small>
+            </button>
+            <button class="clayvibe-btn" onclick="return promoBtnAction(),!1">PROMO RATES</button>
+            <div class="clayvibe-voucher-container">
+                <input id="voucherInput" placeholder="Voucher" type="text">
+                <button id="submitBTN" onclick="return TopUpvc(),!1">
+                    ENTER
+                </button>
+                <small>
+                    Have a voucher? Enter it here to top up your account.
+                </small>
+            </div>
+            $(if trial == 'yes')
+            <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="clayvibe-btn"
+                onclick="hideModal()" style="text-decoration:none">FREE TIME</a>
+            $(endif)
+            <div id="footer"></div>
+            <div class="modal1" id="multiBtn">
+                <center>
+                    <div class="modal-content1"><br><span>Select Vendo Location</span>
+                        <div class="buttons-container">
+                            <div id="btns"></div><button id="idBtnModalRateEnd"
+                                onclick="return multiBtnEnd(),!1">Cancel</button><br>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <div class="modal1" id="idModalRate">
+                <div class="modal-content1">
+                    <h4>Promo Rates</h4>
+                    <center>
+                        <div id="ratesBody"></div>
+                        <button id="idBtnModalRateEnd" onclick="return ModalRateEnd(),!1">
+                            CLOSE
+                        </button>
+                    </center>
+                </div>
+            </div>
+            <div class="modal1" id="idinsrtCoin">
+                <div class="modal-content1">
+                    <h4>Insert Coin...</h4>
+                    <center>
+                        <div class="progress">
+                            <div id="progressDiv" class="progress-bar"></div>
+                        </div>
+                        <table class="insert-table">
+                            <tr>
+                                <td class="label">Balance:</td>
+                                <td><span id="totalCoin">0</span><span>.00 PHP</span></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Time:</td>
+                                <td><span id="totalTime">0h : 0m : 0s</span></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Vendo:</td>
+                                <td><span id="vendoID"></span></td>
+                            </tr>
+                        </table>
+                        <button id="idBtninsrtCoinEnd" onclick="return donepaying(),!1">DONE</button>
+                    </center>
+                </div>
+            </div>
+            <audio id="insertcoinbgAudio">
+                <source src="" type="audio/mpeg">
+            </audio>
+            <audio id="CoindropAudio">
+                <source src="" type="audio/mpeg">
+            </audio>
+            <script id="IPconfig"></script>
+            <div id="loaderDiv" style="display:none;">
+                <div class="loader-spinner"></div>
+            </div>
+            <div id="container"></div>
+        </div>
+    </div>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/scrollMsg.js"></script>
+</body>
+
+</html>
