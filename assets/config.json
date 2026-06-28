@@ -1,0 +1,22 @@
+{
+  "multiVendo": false,
+  "multiVendoOption": 1,
+  "vendoIpAddress": "10.0.0.254",
+  "multiVendoAddresses": [
+    {
+      "vendoName": "VENDOR ONE",
+      "vendoIp": "10.0.0.254",
+      "interfaceName": "vlan1"
+    },
+    {
+      "vendoName": "VENDOR TWO",
+      "vendoIp": "10.0.0.255",
+      "interfaceName": "vlan2"
+    }
+  ],
+  "scrollMessages": [
+    "⚡ Auto Pause is enabled, when you disconnect",
+    "💡 Tip: Click the 'Clear Cache' button if you encounter any problems",
+    "🔔 Need help? Ask for assistance"
+  ]
+}

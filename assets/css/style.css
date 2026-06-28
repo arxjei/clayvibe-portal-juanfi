@@ -5,18 +5,21 @@
     font-family: 'Abril Fatface';
     src: url('../fonts/abril-fatface-v25-latin-regular.woff2') format('woff2');
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Bungee';
     src: url('../fonts/bungee-v17-latin-regular.woff2') format('woff2');
     font-weight: 400;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Inter';
     src: url('../fonts/inter-v20-latin-regular.woff2') format('woff2');
     font-weight: 400;
+    font-display: swap;
 }
 
 /* ============================================ */
@@ -265,6 +268,10 @@ body::before {
   z-index: 2;
 }
 
+.panel-label::before{
+  content: "Time";
+}
+
 /* ============================================ */
 /* TIME DISPLAY - Warm Clay Gradient            */
 /* ============================================ */
@@ -323,6 +330,9 @@ body::before {
     inset 0 2px 4px rgba(255, 255, 255, 0.05),
     inset 0 -2px 4px rgba(0, 0, 0, 0.3),
     0 8px 24px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .clayvibe-btn:active {
@@ -497,7 +507,7 @@ a.clayvibe-btn[href*="T-"]:active {
   font-size: 15px;
   font-weight: 600;
   box-sizing: border-box;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.03);
   font-family: "Inter", "Segoe UI", sans-serif;
 }
@@ -543,6 +553,8 @@ a.clayvibe-btn[href*="T-"]:active {
     inset 0 2px 6px rgba(255, 255, 255, 0.20),
     inset 0 -3px 6px rgba(0, 0, 0, 0.3),
     0 10px 32px rgba(243, 156, 18, 0.20);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #submitBTN:active {
@@ -552,7 +564,6 @@ a.clayvibe-btn[href*="T-"]:active {
     inset 0 2px 8px rgba(0, 0, 0, 0.3),
     0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 
 /* ============================================ */
 /* BUTTON CONTAINER                             */
@@ -748,76 +759,158 @@ a.clayvibe-btn[href*="T-"]:active {
 }
 
 /* ============================================ */
-/* MODAL - Dark Glass                           */
+/* MODAL - Dark Clay Glass                      */
 /* ============================================ */
-.modal1 {
+.clayvibe-modal {
   display: none;
   position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  animation: smoothFadeIn 0.3s ease;
+  animation: clayFadeIn 0.25s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px 16px;
+  box-sizing: border-box;
 }
 
-@keyframes smoothFadeIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+/* When JS sets display:block, upgrade to flex so content centers */
+.clayvibe-modal[style*="display: block"],
+.clayvibe-modal[style*="display:block"] {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
-.modal-content1 {
-  background: rgba(22, 22, 40, 0.95);
+@keyframes clayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Content Box */
+.clayvibe-modal-content {
+  background: rgba(22, 22, 40, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  color: #d4c8b8;
-  margin: 15% auto;
-  padding: 28px;
   border-radius: 22px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.6),
-    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  width: 85%;
-  max-width: 380px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  width: 90%;
+  max-width: 420px;
+  max-height: calc(100vh - 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: auto;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  animation: clayModalSlide 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
 }
 
-.modal-content1 b {
-  font-size: 16px;
+@keyframes clayModalSlide {
+  from { transform: translateY(-20px) scale(0.96); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Modal Header */
+.clayvibe-modal-header {
+  background: linear-gradient(135deg, #3d2b1f, #5a3d2b, #7a4f30);
+  color: #f5d6b3;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-align: center;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.clayvibe-modal-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #e67e22, #f39c12, #e67e22);
+  background-size: 200% 100%;
+  animation: smoothPulse 4s ease-in-out infinite;
+}
+
+/* Modal Body */
+.clayvibe-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+  color: #d4c8b8;
+}
+
+.clayvibe-modal-body b {
+  font-size: 15px;
   font-weight: 700;
   color: #f39c12;
 }
 
-.modal-content1 span {
-  font-size: 18px;
+.clayvibe-modal-body span {
+  font-size: 17px;
   color: #f5d6b3;
 }
 
-/* Modal Buttons - Glassmorphism 3D Inset Style */
+/* Modal Footer */
+.clayvibe-modal-footer {
+  background: rgba(18, 18, 32, 0.95);
+  padding: 12px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Modal Close/Action Buttons */
 #idBtnModalRateEnd,
 #idBtninsrtCoinEnd {
-  background: rgba(30, 30, 50, 0.6);
+  background: rgba(30, 30, 50, 0.7);
   color: #d4c8b8;
-  padding: 10px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 14px;
   cursor: pointer;
   font-weight: 700;
   font-size: 12px;
-  margin: 4px;
   text-transform: uppercase;
+  letter-spacing: 0.8px;
   font-family: "Inter", "Segoe UI", sans-serif;
   position: relative;
+  min-width: 100px;
+  transition: all 0.25s ease;
   box-shadow: 
     inset 0 0 20px rgba(255, 255, 255, 0.03),
     inset 0 2px 4px rgba(255, 255, 255, 0.05),
     inset 0 -2px 4px rgba(0, 0, 0, 0.3),
     0 8px 24px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
+}
+
+#idBtnModalRateEnd:hover,
+#idBtninsrtCoinEnd:hover {
+  background: rgba(40, 38, 60, 0.85);
+  color: #f5d6b3;
+  border-color: rgba(230, 126, 34, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 255, 255, 0.04),
+    0 10px 28px rgba(0, 0, 0, 0.3);
 }
 
 #idBtnModalRateEnd:active,
@@ -834,23 +927,29 @@ a.clayvibe-btn[href*="T-"]:active {
 /* ============================================ */
 #loaderDiv {
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(22, 22, 40, 0.95);
+  transform: translate(-50%, -50%) scale(1);
+  background: rgba(22, 22, 40, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 32px;
   border-radius: 24px;
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.6),
-    0 8px 24px rgba(0, 0, 0, 0.3);
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 8px 24px rgba(0, 0, 0, 0.4);
   text-align: center;
   color: #d4c8b8;
   font-weight: 600;
   font-size: 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: clayLoaderPop 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes clayLoaderPop {
+  from { transform: translate(-50%, -50%) scale(0.95); opacity: 0; }
+  to   { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 }
 
 .loader-spinner {
@@ -931,7 +1030,10 @@ center {
   #voucherInput,
   #submitBTN,
   .clayvibe-btn,
-  .modal-content1,
+  .clayvibe-modal-content,
+  .clayvibe-modal-header,
+  .clayvibe-modal-body,
+  .clayvibe-modal-footer,
   .progress,
   .progress-bar,
   .insert-table,
@@ -1003,10 +1105,36 @@ center {
     font-size: 8px;
   }
 
-  .modal-content1 {
-    margin: 25% auto;
-    padding: 20px;
-    border-radius: 16px !important;
+  .clayvibe-modal-content {
+    width: 95%;
+    max-height: 85vh;
+  }
+
+  .clayvibe-modal-header {
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+
+  .clayvibe-modal-body {
+    padding: 16px 14px;
+  }
+
+  .clayvibe-modal-footer {
+    padding: 10px 14px;
+  }
+
+  #idBtnModalRateEnd,
+  #idBtninsrtCoinEnd {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+
+  .clayvibe-btn,
+  #submitBTN,
+  #idBtnModalRateEnd,
+  #idBtninsrtCoinEnd {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 
   #btns {
@@ -1015,6 +1143,11 @@ center {
 
   .buttons-container {
     gap: 8px;
+  }
+
+  .clayvibe-scrollMsg {
+    padding: 6px 0;
+    font-size: 11px;
   }
 }
 
@@ -1072,9 +1205,35 @@ center {
     min-height: 42px;
     padding: 4px 8px;
   }
-  
+
   .clayvibe-btn[onclick*="insertBtnAction"] small {
     font-size: 7px;
+  }
+
+  .clayvibe-modal-content {
+    width: 98%;
+    max-height: 90vh;
+  }
+
+  .clayvibe-modal-header {
+    font-size: 12px;
+    padding: 10px 14px;
+    letter-spacing: 1px;
+  }
+
+  .clayvibe-modal-body {
+    padding: 12px 10px;
+  }
+
+  .clayvibe-modal-footer {
+    padding: 8px 10px;
+  }
+
+  #idBtnModalRateEnd,
+  #idBtninsrtCoinEnd {
+    padding: 6px 16px;
+    font-size: 11px;
+    min-width: 60px;
   }
 
   #footer::before {

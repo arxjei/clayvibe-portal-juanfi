@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
+
     <script type="text/javascript">
         var interfaceName = "$(interface-name)", stsPage = "$(logged-in)", mac = "$(mac)", uIp = "$(ip)", time = "$(session-time-left-secs)"
     </script>
@@ -21,70 +22,26 @@
             <div class="internet-status-container is-connected"></div>
             <header class="clayvibe-dialog-device-info">&#127758<b>$(ip)</b>&#128421<b>$(mac)</b></header>
             <div class="panel">
-                <div class="panel-label">Remaining Time</div>
+                <div class="panel-label"></div>
                 <span id="remainTime"></span>
             </div>
-            <button class="clayvibe-btn" onclick="return pause(),!1">PAUSE TIME</button>
+            <button class="clayvibe-btn" onclick="return pause(),!1">Pause Time</button>
             <button class="clayvibe-btn" onclick="return insertBtnAction(),!1">
-                EXTEND TIME
-            <small>⚠️ Please Do Not Abuse The Coinslot</small>
+                Extend Time
+                <small>⚠️ Please Do Not Abuse The Coinslot</small>
             </button>
-            <button class="clayvibe-btn" onclick="return promoBtnAction(),!1">PROMO RATES</button>
-             <div class="clayvibe-voucher-container">
+            <button class="clayvibe-btn" onclick="return promoBtnAction(),!1">Promo Rates</button>
+            <div class="clayvibe-voucher-container">
                 <input id="voucherInput" placeholder="Voucher" type="text">
                 <button id="submitBTN" onclick="return TopUpvc(),!1">
-                    ENTER
+                    Enter
                 </button>
                 <small>
                     Have a voucher? Enter it here to top up your account.
                 </small>
-            </div>   
+            </div>
             <div id="footer"></div>
 
-            <div class="modal1" id="multiBtn">
-                <center>
-                    <div class="modal-content1"><br><span>Select Vendo Location</span>
-                        <div class="buttons-container">
-                            <div id="btns"></div><button id="idBtnModalRateEnd"
-                                onclick="return multiBtnEnd(),!1">Cancel</button><br>
-                        </div>
-                    </div>
-                </center>
-            </div>
-            <div class="modal1" id="idModalRate">
-                <center>
-                    <div class="modal-content1">
-                        <div id="ratesBody"></div>
-                        <br>
-                        <button id="idBtnModalRateEnd" onclick="return ModalRateEnd(),!1">Close</button>
-                    </div>
-                </center>
-            </div>
-            <div class="modal1" id="idinsrtCoin">
-                <div class="modal-content1">
-                    <b>Insert Coin...</b><br><br>
-                    <center>
-                        <div class="progress">
-                            <div id="progressDiv" class="progress-bar"></div>
-                        </div>
-                        <table class="insert-table">
-                            <tr>
-                                <td class="label">Balance:</td>
-                                <td><span id="totalCoin">0</span><span>.00 PHP</span></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Time:</td>
-                                <td><span id="totalTime">0h : 0m : 0s</span></td>
-                            </tr>
-                            <tr>
-                                <td class="label">Vendo:</td>
-                                <td><span id="vendoID"></span></td>
-                            </tr>
-                        </table>
-                        <button id="idBtninsrtCoinEnd" onclick="return donepaying(),!1">DONE</button><br><br>
-                    </center>
-                </div>
-            </div>
             <audio id="insertcoinbgAudio">
                 <source src="" type="audio/mpeg">
             </audio><audio id="CoindropAudio">
@@ -95,6 +52,64 @@
                 <div class="loader-spinner"></div>
             </div>
             <div id="container"></div>
+        </div>
+    </div>
+
+
+    <!-- insert coin modal -->
+    <div class="clayvibe-modal" id="multiBtn">
+        <div class="clayvibe-modal-content">
+            <div class="clayvibe-modal-header">Select Vendo Machine</div>
+            <div class="clayvibe-modal-body">
+                <div class="buttons-container">
+                    <div id="btns"></div>
+                </div>
+            </div>
+            <div class="clayvibe-modal-footer">
+                <button id="idBtnModalRateEnd" onclick="return multiBtnEnd(),!1">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- promo rates modal -->
+    <div class="clayvibe-modal" id="idModalRate">
+        <div class="clayvibe-modal-content">
+            <div class="clayvibe-modal-header">Promo Rates</div>
+            <div class="clayvibe-modal-body">
+                <div id="ratesBody"></div>
+            </div>
+            <div class="clayvibe-modal-footer">
+                <button id="idBtnModalRateEnd" onclick="return ModalRateEnd(),!1">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- insert coin modal -->
+    <div class="clayvibe-modal" id="idinsrtCoin">
+        <div class="clayvibe-modal-content">
+            <div class="clayvibe-modal-header">Insert Coin...</div>
+            <div class="clayvibe-modal-body">
+                <div class="progress">
+                    <div id="progressDiv" class="progress-bar"></div>
+                </div>
+                <table class="insert-table">
+                    <tr>
+                        <td class="label">Balance:</td>
+                        <td><span id="totalCoin">0</span><span>.00 PHP</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Time:</td>
+                        <td><span id="totalTime">0h : 0m : 0s</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Vendo:</td>
+                        <td><span id="vendoID"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clayvibe-modal-footer">
+                <button id="idBtninsrtCoinEnd" onclick="return donepaying(),!1">Done</button>
+            </div>
         </div>
     </div>
 

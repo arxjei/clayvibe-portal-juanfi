@@ -94,16 +94,15 @@ function chkdata() {
 			"application/x-www-form-urlencoded; charset=UTF-8",
 		),
 		(e.onreadystatechange = function () {
-			if (4 == this.readyState && 200 == this.status) {
-				var e = this.responseText;
-				document.getElementById("remainTime").innerHTML = secondsToDhms(e);
+			if (4 == this.readyState) {
+				if (200 == this.status) {
+					var t = parseInt(this.responseText);
+					document.getElementById("remainTime").innerHTML =
+						isNaN(t) || t <= 0 ? "0h : 0m : 0s" : secondsToDhms(t);
+				} else {
+					document.getElementById("remainTime").innerHTML = "0h : 0m : 0s";
+				}
 			}
-			if (404 == this.status)
-				return (
-					(document.getElementById("InOuttBTN").disabled = !0),
-					void (document.getElementById("remainTime").innerHTML =
-						"00h : 00m : 00s")
-				);
 		}),
 		e.send());
 }
@@ -333,18 +332,20 @@ function secondsToDhms(e) {
 		i = Math.floor(e % 60);
 	return (
 		(t > 0 ? t + "d: " : "") +
-		(n > 0 ? n + "" : "00") +
+		(n > 0 ? n + "" : "0") +
 		"h : " +
-		(o > 0 ? o + "" : "00") +
+		(o > 0 ? o + "" : "0") +
 		"m : " +
-		(i > 0 ? i + "" : "00") +
+		(i > 0 ? i + "" : "0") +
 		"s"
 	);
 }
 ((div.id = "progress-bar-color"),
 	(div.innerHTML = "<p></p>"),
 	document.body.appendChild(div),
-	"yes" != stsPage && chkdata(),
+	"yes" != stsPage &&
+		((document.getElementById("remainTime").innerHTML = "0h : 0m : 0s"),
+		chkdata()),
 	"yes" == stsPage &&
     "0" == time &&
     (document.getElementById("remainTime").innerHTML = "Connected"),
